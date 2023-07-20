@@ -3,7 +3,7 @@
  * Copyright(c) 2023 John Sanpe <sanpeqf@gmail.com>
  */
 
-#ifdef _BFRL_READLINE_H_
+#ifdef _BFRL_READLINE_
 
 static int
 clipbrd_save(struct bfrl_state *rstate, unsigned int *clippos)
@@ -52,4 +52,4 @@ clipbrd_restory(struct bfrl_state *rstate)
         readline_insert(rstate, rstate->clipbrd, rstate->cliplen);
 }
 
-#endif /* _BFRL_READLINE_H_ */
+#endif /* _BFRL_READLINE_ */

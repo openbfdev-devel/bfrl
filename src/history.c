@@ -3,7 +3,7 @@
  * Copyright(c) 2023 John Sanpe <sanpeqf@gmail.com>
  */
 
-#ifdef _BFRL_READLINE_H_
+#ifdef _BFRL_READLINE_
 
 static int
 workspace_save(struct bfrl_state *rstate)
@@ -153,4 +153,4 @@ history_clear(struct bfrl_state *rstate)
     rstate->curr = NULL;
 }
 
-#endif /* _BFRL_READLINE_H_ */
+#endif /* _BFRL_READLINE_ */

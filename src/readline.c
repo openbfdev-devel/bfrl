@@ -41,6 +41,7 @@ readline_fill(struct bfrl_state *rstate, unsigned int len)
         readline_write(rstate, " ", 1);
 }
 
+#define _BFRL_READLINE_
 #include "cursor.c"
 #include "history.c"
 #include "clipbrd.c"

@@ -15,16 +15,13 @@ set(CMAKE_MODULE_PATH
     ${PROJECT_SOURCE_DIR}/cmake
 )
 
-set(SRC_SOURCE
-    "src/readline.c"
-)
-
 configure_file(
     ${CMAKE_MODULE_PATH}/config.h.in
     ${PROJECT_BINARY_DIR}/generated/bfrl/config.h
 )
 
 FILE(GLOB_RECURSE SRC_HEADER "include/*.h")
+FILE(GLOB_RECURSE SRC_SOURCE "src/*.c")
 include_directories(${PROJECT_SOURCE_DIR}/include)
 include_directories(${PROJECT_BINARY_DIR}/generated)
 

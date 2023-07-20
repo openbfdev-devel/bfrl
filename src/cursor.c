@@ -3,7 +3,7 @@
  * Copyright(c) 2023 John Sanpe <sanpeqf@gmail.com>
  */
 
-#ifdef _BFRL_READLINE_H_
+#ifdef _BFRL_READLINE_
 
 static inline void
 cursor_save(struct bfrl_state *rstate)
@@ -133,4 +133,4 @@ readline_clear(struct bfrl_state *rstate)
     readline_write(rstate, rstate->prompt, rstate->plen);
 }
 
-#endif /* _BFRL_READLINE_H_ */
+#endif /* _BFRL_READLINE_ */
