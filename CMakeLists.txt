@@ -6,6 +6,9 @@
 cmake_minimum_required(VERSION 3.9)
 project(bfrl VERSION "1.0" LANGUAGES C)
 
+include(GNUInstallDirs)
+include(CheckIncludeFiles)
+
 option(ENABLE_EXAMPLES "Build examples" OFF)
 
 set(CMAKE_MODULE_PATH
@@ -18,12 +21,12 @@ set(SRC_SOURCE
 
 configure_file(
     ${CMAKE_MODULE_PATH}/config.h.in
-    ${PROJECT_BINARY_DIR}/include/bfrl/config.h
+    ${PROJECT_BINARY_DIR}/generated/bfrl/config.h
 )
 
 FILE(GLOB_RECURSE SRC_HEADER "include/*.h")
 include_directories(${PROJECT_SOURCE_DIR}/include)
-include_directories(${PROJECT_BINARY_DIR}/include)
+include_directories(${PROJECT_BINARY_DIR}/generated)
 
 set(BFRL_LIBRARY
     ${SRC_HEADER}
@@ -42,7 +45,17 @@ if(ENABLE_EXAMPLES)
     add_subdirectory(examples)
 endif()
 
-install(TARGETS
-    bfrl_static bfrl_shared
-    DESTINATION ${CMAKE_INSTALL_BINDIR}
-)
+if(${CMAKE_PROJECT_NAME} STREQUAL "bfrl")
+    install(DIRECTORY
+        ${BFDEV_HEADER_PATH}/bfrl
+        ${BFDEV_GENERATED_PATH}/bfrl
+        DESTINATION
+        "${CMAKE_INSTALL_INCLUDEDIR}"
+    )
+
+    install(TARGETS
+        bfrl_static bfrl_shared
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    )
+endif()
